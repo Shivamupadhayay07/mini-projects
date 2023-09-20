@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop\watch</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            width: 35vw;
+            height: 20vh;
+            margin: auto;
+            margin-top: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
+            box-shadow: 0px 0px 50px rgb(4, 4, 4);;
+        }
+        #hr ,#min ,#sec ,#ms {
+            width: 20%;
+            font-family:  "Digital-7 Mono", monospace;
+        }
+        h1 {
+            width: 10%;
+            text-align: center;
+            color: rgb(234, 222, 222);
+        }
+        button {
+            margin-left: 50%;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="hr">00</h1>
+        <h1>:</h1>
+        <h1 id="min">00</h1>
+        <h1>:</h1>
+        <h1 id="sec">00</h1>
+        <h1>:</h1>
+        <h1 id="ms">00</h1>
+    </div>
+    
+    <button type="submit" id="sbt">Start</button>
+    <script>
+        let ms = 0;
+        let sec = 0;
+        let min = 0;
+        let hr = 0;
+        document.getElementById("sbt").onclick = function() {
+            setInterval(() => {
+                ms += 1;
+                if(ms == 100)
+                {
+                    ms = 0;
+                }
+                document.getElementById("ms").innerHTML = ms
+            },10)
+            setInterval(() => {
+                sec = sec + 1;
+                if(sec == 60){
+                    sec = 0;
+                }
+                document.getElementById("sec").innerHTML = sec;
+            },1000) 
+            setInterval(() => {
+                min += 1;
+                if(min == 60)
+                {
+                    min = 0;
+                }
+                document.getElementById("min").innerHTML = min
+            },60000)  
+            setInterval(() => {
+                hr += 1;
+                if(hr == 24)
+                {
+                    hr = 0;
+                }
+                document.getElementById("hr").innerHTML = hr
+            },3600000) 
+        } 
+    </script>
+</body>
+</html>
